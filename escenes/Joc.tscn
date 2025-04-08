@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://br45u25c43xk3"]
+[gd_scene load_steps=4 format=3 uid="uid://br45u25c43xk3"]
 
 [ext_resource type="PackedScene" uid="uid://7o5j08lkxhr4" path="res://joc-sol/escenes/laberint.tscn" id="1_qhkpe"]
+[ext_resource type="PackedScene" uid="uid://cjivb5rkhr22t" path="res://joc-sol/escenes/jugador.tscn" id="2_mja3k"]
+[ext_resource type="Script" uid="uid://bm3twx2rdd7rj" path="res://joc-sol/escenes/jugador.gd" id="3_phw1g"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="StaticBody2D" parent="." instance=ExtResource("1_qhkpe")]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_mja3k")]
+position = Vector2(23, 578)
+script = ExtResource("3_phw1g")
