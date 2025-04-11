@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://br45u25c43xk3"]
+
+[ext_resource type="PackedScene" uid="uid://7o5j08lkxhr4" path="res://joc-sol/escenes/laberint.tscn" id="1_qhkpe"]
+[ext_resource type="PackedScene" uid="uid://cjivb5rkhr22t" path="res://joc-sol/escenes/jugador.tscn" id="2_mja3k"]
+[ext_resource type="Script" uid="uid://bm3twx2rdd7rj" path="res://joc-sol/escenes/jugador.gd" id="3_phw1g"]
+[ext_resource type="Script" uid="uid://co181lhu24i58" path="res://joc-sol/escenes/area_2d.gd" id="4_egtee"]
+[ext_resource type="Script" uid="uid://b4yf37ntt3cv3" path="res://joc-sol/escenes/label.gd" id="5_a8si7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phw1g"]
+size = Vector2(25.5, 81)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" parent="." instance=ExtResource("1_qhkpe")]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_mja3k")]
+position = Vector2(50, 600)
+script = ExtResource("3_phw1g")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1139.25, 49.5)
+script = ExtResource("4_egtee")
+
+[node name="Label" type="Label" parent="Area2D"]
+offset_left = -776.25
+offset_top = 154.5
+offset_right = -357.25
+offset_bottom = 298.5
+script = ExtResource("5_a8si7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_phw1g")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D"]
+offset_left = -13.0
+offset_top = -40.0
+offset_right = 13.0
+offset_bottom = 40.0
+color = Color(0, 0.807843, 0, 1)
+
+[connection signal="area_entered" from="Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
